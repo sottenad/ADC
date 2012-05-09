@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 
+  make: MyString
+  model: MyString
+  trim: MyString
+  year: 1.5
+
+two:
+  id: 
+  make: MyString
+  model: MyString
+  trim: MyString
+  year: 1.5
