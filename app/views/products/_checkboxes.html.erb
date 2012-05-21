@@ -1,0 +1,99 @@
+  <div class="field">
+
+  
+	<% @vehicles.each_with_index do |v,i| 
+		prevIndex = i-1
+		nextIndex = i+1
+		prev = @vehicles[prevIndex]
+		nextitem = @vehicles[nextIndex]
+		if !nextitem.nil?
+			if nextitem.year != v.year
+				nextyear = true
+			end
+			if nextitem.make != v.make
+				nextmake = true
+			end
+			if nextitem.model != v.model 
+				nextmodel = true
+			end
+			if nextitem.trim != v.trim 
+				nexttrim = true
+			end			
+		end
+		
+		prev = @vehicles[prevIndex]
+		if !prev.nil?
+			if prev.year != v.year
+				prevyear = true
+			end
+			if prev.make != v.make
+				prevmake = true
+			end
+			if prev.model != v.model 
+				prevmodel = true
+			end
+			if prev.trim != v.trim
+				prevtrim = true
+			end
+		end
+		
+		checked = false
+
+		idString = v.id.to_s
+		if !f.object.vehicles.nil?
+			
+			
+				
+			if f.object.vehicles.include?("'"+idString+"'")
+				checked = true
+			end
+		end
+
+		%>
+		
+		
+		<% if prevyear %>
+			<% if checked %>
+				<ul class="<%=v.year%>"><li class="title"><%= check_box_tag "product[vehicles][]", v.id.to_int, true %> <span><%=v.year%></span></li>
+			<% else %>
+				<ul class="<%=v.year%>"><li class="title"><%= check_box_tag "product[vehicles][]", v.id.to_int %> <span><%=v.year%></span></li>
+			<% end %>
+		<% end %>
+		<% if prevmake %>
+			<% if checked %>
+				<ul class="<%=v.make%>"><li class="title"><%= check_box_tag "product[vehicles][]", v.id.to_int, true %> <span><%=v.make%></span></li>
+			<% else %>
+				<ul class="<%=v.make%>"><li class="title"><%= check_box_tag "product[vehicles][]", v.id.to_int %> <span><%=v.make%></span></li>
+			<% end %>
+		<% end %>
+		<% if prevmodel %>
+			<% if checked %>
+				<ul class="<%=v.model%>"><li class="title"><%= check_box_tag "product[vehicles][]", v.id.to_int, true %> <span><%=v.model%></span></li>
+			<% else %>
+				<ul class="<%=v.model%>"><li class="title"><%= check_box_tag "product[vehicles][]", v.id.to_int %> <span><%=v.model%></span></li>
+			<% end %>
+		<% end %>
+		<% if prevtrim %>
+			<% if checked %>
+				<ul class="<%=v.model%>"><li class="title"><%= check_box_tag "product[vehicles][]", v.id.to_int, true %><span><%=v.trim%></span></li>
+			<% else %>
+				<ul class="<%=v.model%>"><li class="title"><%= check_box_tag "product[vehicles][]", v.id.to_int %><span><%=v.trim%></span></li>
+			<% end %>
+		<% end %>
+		
+
+		<% if nexttrim %>
+			</ul>
+		<% end %>
+		<% if nextmodel %>
+			</ul>
+		<% end %>
+		<% if nextmake %>
+			</ul>
+		<% end %>
+		<% if nextyear %>
+			</ul>
+		<% end %>
+		
+	<% end %>
+  </div>

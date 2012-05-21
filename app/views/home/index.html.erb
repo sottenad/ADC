@@ -1,0 +1,36 @@
+
+<% if session[:user_id].nil? %>
+
+<p><%= link_to "Sign Up", "users/new" %></p>
+<% else %>
+<div class="row-fluid">
+	<div clas="grid12">
+		<h3>Select a Vehicle</h3>
+		<p>Select a vehicle to test out the multipicker below, as well as the relationship between the products -> vehicles.</p>
+		<select id="year">
+		<% @vehicles.each do |vehicle| %>
+		    <option value="<%= vehicle.year %>"><%= vehicle.year %></option>
+		<% end %>
+		</select>	
+		<select id="make">
+			<option>Make</option>
+		</select>
+		<select id="model">
+			<option>Model</option>
+		</select>
+		<select id="trim">
+			<option>None</option>
+		</select>
+		<a href="#" class="save">Save</a>
+		<br />
+		<% if !session['vehicleid'].nil? %>
+			<p><strong>Your Current Car:</strong> <%= @carObject[0].year %> <%= @carObject[0].make %> <%= @carObject[0].model %></p>
+		<% end %>
+	</div>
+	<h3>Products for the Selected Vehicle</h3>
+	<p>To test out this functionality, please create a product and assign 'available vehicles' to it. Then come back here and verify that the product shows up.</p>
+	<% @productsForCar.each do |item| %>
+		<a href="/products/<%= item.id%>"><%= item.name %></a>
+	<% end %>
+</div>
+<%end%>

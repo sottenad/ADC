@@ -1,31 +1,27 @@
-<h1>Listing vehicles</h1>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Make</th>
-    <th>Model</th>
-    <th>Trim</th>
-    <th>Year</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row-fluid">
+	<div class="span4">
+		<div class="hero-unit">
+			<h2>Add a Vehicle</h2>
+			<p>Add one vehicle at a time to account for additional models or to fill in gaps in the database. Simply add new vehicles to the database and the associate products to it.</p>
 
-<% @vehicles.each do |vehicle| %>
-  <tr>
-    <td><%= vehicle.id %></td>
-    <td><%= vehicle.make %></td>
-    <td><%= vehicle.model %></td>
-    <td><%= vehicle.trim %></td>
-    <td><%= vehicle.year %></td>
-    <td><%= link_to 'Show', vehicle %></td>
-    <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
-    <td><%= link_to 'Destroy', vehicle, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+			<a class="btn btn-primary btn-large" href="/vehicles/new"><i class="icon-plus-sign icon-white"></i> New Vehicle</a>
+		</div>		
+	</div>
 
-<br />
-
-<%= link_to 'New Vehicle', new_vehicle_path %>
+	<div class="span4">
+		<div class="hero-unit">
+			<h2>Add Many</h2>
+			<p>Uploading a .csv file is great when you need to make bulk changes to the list of vehicles you have in the database.  Right now  we allow you to customize this <a href="/models.csv">file</a> and upload it.</p>
+			<a class="btn btn-primary btn-large" href="/vehicles/new"><i class="icon-upload icon-white"></i> Upload .CSV File</a>
+		</div>
+	</div>
+	
+	<div class="span4">
+		<div class="hero-unit">
+			<h2>View/Edit</h2>
+			<p>View the all-up list of all the vehicles in the database. You can search and narrow by make/model/year and edit individual vehicles information. Please note: this page can take a while to load.</p>
+			<a class="btn btn-primary btn-large" href="/vehicles/all"><i class="icon-th-list icon-white"></i> View All Vehicles</a>
+		</div>
+	</div>
+</div>

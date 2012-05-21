@@ -1,9 +1,17 @@
-class VehiclesController < ApplicationController
+class VehiclesController < PrivateController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = Vehicle.all
-
+  
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  
+  end
+  
+  def all
+     
+    @vehicles = Vehicle.order("year").page(params[:page]).per(50)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @vehicles }
@@ -25,7 +33,6 @@ class VehiclesController < ApplicationController
   # GET /vehicles/new.json
   def new
     @vehicle = Vehicle.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @vehicle }
@@ -80,4 +87,9 @@ class VehiclesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
+  
+
+  
 end

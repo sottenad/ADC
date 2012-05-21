@@ -1,3 +1,12 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.all-up ul span {cursor:pointer; font-size:14px; display:inline-block; min-width:80%;}
+.all-up ul span:hover {cursor:pointer; background:#eee;}
+.all-up li{padding:2px 0;}
+
+ul{list-style-type:none; margin:0;}
+ul ul{display:none; margin-left:20px;}
+
+
+.manage_col{width:40px;}

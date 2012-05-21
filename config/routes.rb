@@ -1,9 +1,26 @@
 ADC::Application.routes.draw do
+  
+
+	get "session" => "sessions#new", :as => "session"	
+	get "log_out" => "sessions#destroy", :as => "log_out"
+	get "log_in" => "sessions#new", :as => "log_in"
+	get "sign_up" => "users#new", :as => "sign_up"
+
+	resources :users
+	resources :sessions
+
+	get "vehicles/all"
+  get "home/index"
+    get "sessions/index"
+
   resources :vehicles
 
   get "upload/index"
   get "upload/processCsv"
   post "upload/processCsv"
+  
+  get "service/index"
+  get "home/store"
 
   resources :upload
   resources :products
@@ -57,7 +74,7 @@ ADC::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

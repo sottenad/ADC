@@ -1,8 +1,12 @@
-class ProductsController < ApplicationController
+class ProductsController < PrivateController
   # GET /products
   # GET /products.json
+  
+  caches_page :new
+  
   def index
-    @products = Product.all
+        @products = Product.order("id").page(params[:page]).per(50)
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +18,8 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+        @vehicles = Vehicle.find(:all, :order=>'year,make,model,trim')
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +31,9 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
+    @vehicles = Vehicle.find(:all, :order=>'year,make,model,trim')
+    
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +44,8 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+        @vehicles = Vehicle.find(:all, :order=>'year,make,model,trim')
+
   end
 
   # POST /products

@@ -1,4 +1,4 @@
-class UploadController < ApplicationController
+class UploadController < PrivateController
   def index
   	
   
