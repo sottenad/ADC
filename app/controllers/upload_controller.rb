@@ -1,11 +1,14 @@
 class UploadController < PrivateController
+require 'rubygems'
+require 'open-uri'
+require 'csv'
   def index
   	
   
   end
   
 	
-	require 'CSV'
+	
 	def processCsv
 	  @numOfCars = 0
 	  CSV.parse(params[:file].read) do |row|
