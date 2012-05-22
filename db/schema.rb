@@ -11,14 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521045400) do
+ActiveRecord::Schema.define(:version => 20120522011131) do
+
+  create_table "makes", :force => true do |t|
+    t.string   "make"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "models", :force => true do |t|
+    t.string   "model"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "vehicles"
     t.float    "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "image"
+    t.text     "description"
   end
 
   create_table "users", :force => true do |t|
@@ -33,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20120521045400) do
     t.string   "make"
     t.string   "model"
     t.string   "trim"
+    t.integer  "year"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "years", :force => true do |t|
     t.integer  "year"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
